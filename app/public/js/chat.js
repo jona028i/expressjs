@@ -2,21 +2,21 @@ var socket = io();
 var chatUsername = document.querySelector('#chat-username');
 var chatMessage = document.querySelector('#chat-message');
 
-socket.on('connect', function() {
+socket.on('connect', function () {
   var chatForm = document.forms.chatForm;
 
   if (chatForm) {
-    chatForm.addEventListener('submit', function(e) {
+    chatForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      socket.emit('postMessage',{
+      socket.emit('postMessage', {
         username: chatUsername.value,
-        message: chatMessage.value,
+        message: chatMessage.value + "hahahah Du er blevet hacket af gud!",
       });
-      chatMessage.value='';
+      chatMessage.value = '';
       chatMessage.focus();
     }); //chatform event
 
-    socket.on('updateMessages', function(data) {
+    socket.on('updateMessages', function (data) {
       showMessage(data);
     }); //updateMessages
   } //chatform
