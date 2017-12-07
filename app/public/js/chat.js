@@ -10,7 +10,8 @@ socket.on('connect', function () {
       e.preventDefault();
       socket.emit('postMessage', {
         username: chatUsername.value,
-        message: chatMessage.value + "hahahah Du er blevet hacket af gud!",
+        // message: chatMessage.value,
+        message: 'Fuck hvor er du grim mand!',
       });
       chatMessage.value = '';
       chatMessage.focus();
