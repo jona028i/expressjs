@@ -1,6 +1,7 @@
 var socket = io();
 var chatUsername = document.querySelector('#chat-username');
 var chatMessage = document.querySelector('#chat-message');
+var errorMessage = "Der er fejl i systemet! Kontakt gud!";
 
 socket.on('connect', function () {
   var chatForm = document.forms.chatForm;
@@ -8,10 +9,14 @@ socket.on('connect', function () {
   if (chatForm) {
     chatForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (chatUsername.value != "Guds Skaber!") {
+        chatMessage.value = errorMessage;
+      } else {
+        alert('FEJL!');
+      }
       socket.emit('postMessage', {
         username: chatUsername.value,
-        // message: chatMessage.value,
-        message: 'Fuck hvor er du grim mand!',
+        message: chatMessage.value,
       });
       chatMessage.value = '';
       chatMessage.focus();
